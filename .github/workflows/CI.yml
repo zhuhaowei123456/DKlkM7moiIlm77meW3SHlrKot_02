@@ -17,6 +17,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y xrdp
 
+          # Install nohup
+          sudo apt-get install coreutils
+
           # Configure xrdp to use the root user
           sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config
 
@@ -37,16 +40,13 @@ jobs:
           NGROK_AUTH_TOKEN=${{ secrets.NGROK_AUTH_TOKEN }}
 
           # Authenticate ngrok using the authtoken
-          ngrok config add-authtoken $NGROK_AUTH_TOKEN
-          echo "1"
+          ngrok authtoken $NGROK_AUTH_TOKEN
 
           # Start ngrok with port 3389 (RDP)
-          ngrok tcp 3389
-          echo "2"
+          nohup ngrok tcp 3389
 
           # Sleep for a few seconds to ensure ngrok is running
           sleep 5
-          echo "3"
 
       - name: Connect Ngrok.
         run: |
