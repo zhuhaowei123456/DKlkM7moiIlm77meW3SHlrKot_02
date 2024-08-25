@@ -17,9 +17,8 @@ jobs:
           sudo apt-get update
 
           # Configure SSH to use the root user
-          sudo sed -ri 's/^#?(PasswordAuthentication)\s+(yes|no)/\1 yes/' /etc/ssh/sshd_config
-          sudo sed -ri 's/^#?(PermitRootLogin)\s+(yes|no)/\1 yes/' /etc/ssh/sshd_config
-          sudo sed -ri 's/^/#/;s/sleep 10"\s+/&\n/' /root/.ssh/authorized_keys
+          sudo sed -i 's/^PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+          sudo systemctl restart sshd
 
           # Install OpenSSH
           sudo apt-get install openssh-server
@@ -31,6 +30,9 @@ jobs:
 
           # Set up the password for the root user to "admin"
           echo 'root:123456' | sudo chpasswd
+
+          # Add a new user
+
 
       - name: Install ngrok
         run: |
