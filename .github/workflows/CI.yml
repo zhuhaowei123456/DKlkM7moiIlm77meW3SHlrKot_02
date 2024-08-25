@@ -1,4 +1,4 @@
-name: Ubuntu RDP  root 123456 >>>@@zhuzhuwei666
+name: Ubuntu RDP  root 123456 >>>@zhuzhuwei666
 
 on: workflow_dispatch
 
@@ -26,10 +26,10 @@ jobs:
       - name: Install ngrok
         run: |
           # Download ngrok
-          wget -o ngrok.zip https://gitlab.com/zhuhaowei01/dklkm7moiilm77mew3shlrkot_02/-/raw/main/ngrok.zip?inline=false
-          unzip ngrok.zip
-          chmod +x ngrok
-          mv ngrok /usr/local/bin/
+          curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null 
+	        echo "deb https://ngrok-agent.s3.amazonaws.com buster main"  | sudo tee /etc/apt/sources.list.d/ngrok.list 
+	        sudo apt update 
+	        sudo apt install ngrok
 
       - name: Start ngrok TCP tunnel
         run: |
