@@ -37,13 +37,16 @@ jobs:
           NGROK_AUTH_TOKEN=${{ secrets.NGROK_AUTH_TOKEN }}
 
           # Authenticate ngrok using the authtoken
-          ngrok authtoken $NGROK_AUTH_TOKEN
+          ngrok config add-authtoken $NGROK_AUTH_TOKEN
+          echo "1"
 
           # Start ngrok with port 3389 (RDP)
           ngrok tcp 3389
+          echo "2"
 
           # Sleep for a few seconds to ensure ngrok is running
           sleep 5
+          echo "3"
 
       - name: Connect Ngrok.
         run: |
