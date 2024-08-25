@@ -39,7 +39,7 @@ jobs:
           ngrok authtoken $NGROK_AUTH_TOKEN
 
           # Start ngrok with port 3389 (RDP)
-          nohup ngrok tcp 22
+          nohup ngrok tcp 22 &
 
           # Sleep for a few seconds to ensure ngrok is running
           sleep 5
