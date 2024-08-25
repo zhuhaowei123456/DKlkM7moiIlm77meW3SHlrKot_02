@@ -11,16 +11,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install xrdp and configure for root
+      - name: System Update and configure for root
         run: |
           # System Update
           sudo apt-get update
 
           # Install nohup
           sudo apt-get install coreutils
-
-          # Configure xrdp to use the root user
-          sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config
 
           # Set up the password for the root user to "admin"
           echo 'root:123456' | sudo chpasswd
