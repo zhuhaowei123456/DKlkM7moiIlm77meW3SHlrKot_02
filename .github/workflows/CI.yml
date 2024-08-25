@@ -45,7 +45,7 @@ jobs:
           sleep 5
 
           # Get the public IP address provided by ngrok
-          public_ip=$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
+          echo "::set-output name=url::$(curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)"
            
           # Output the public  IP address&login imformation
           echo "Public IP Address: $public_ip"
