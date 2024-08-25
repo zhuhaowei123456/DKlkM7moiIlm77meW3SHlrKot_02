@@ -16,6 +16,11 @@ jobs:
           # System Update
           sudo apt-get update
 
+          # Install OpenSSH
+          sudo apt-get install openssh-server
+          sudo systemctl start ssh
+          sudo systemctl enable ssh
+
           # Install nohup
           sudo apt-get install coreutils
 
