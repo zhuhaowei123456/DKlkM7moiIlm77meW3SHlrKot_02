@@ -42,15 +42,15 @@ jobs:
           sudo ngrok tcp 3389
 
           # Sleep for a few seconds to ensure ngrok is running
-          # sleep 5
+          sudo sleep 5
 
           # Get the public IP address provided by ngrok
-          public_ip=$(curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)"
+          sudo public_ip=$(curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)"
            
           # Output the public  IP address&login imformation
-          echo "Public IP Address: $public_ip"
-          echo "username:root"
-          echo "password:123456"
+          sudo echo "Public IP Address: $public_ip"
+          sudo echo "username:root"
+          sudo echo "password:123456"
 
       - name: Keep Alive
         run: |
